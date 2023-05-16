@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Response</title>
+</head>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="authenticate.html">Authenticate</a></li>
+        <li class="nav-item"><a class="nav-link" href="author.html">Author</a></li>
+        <li class="nav-item"><a class="nav-link" href="paper.html">Paper</a></li>
+        <li class="nav-item"><a class="nav-link" href="endpoint.html">Endpoint</a></li>
+        <li class="nav-item"><a class="nav-link" href="update.html">Update</a></li>
+        <li class="nav-item"><a class="nav-link" href="database.html">Database</a></li>
+        <li class="nav-item"><a class="nav-link" href="response.html">Response</a></li>
+        <li class="nav-item"><a class="nav-link" href="JsonResponse.html">Json Response</a></li>
+        <li class="nav-item"><a class="nav-link" href="request.html">Request</a></li>
+    </ul>
+</nav>
+<div class="container mt-5">
+<h1>Response</h1>
+<p>This abstract class represents a Response object, which is used to process and format the data that will be returned to the client in the HTTP response. It has a protected $data property and methods to set and get this data. It also has a protected headers method that can be overridden by child classes to set custom HTTP headers.</p>
+
+<h2>Properties</h2>
+<table class="table table-bordered">
+    <thead class="thead-light">
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><code>$data</code></td>
+        <td>mixed</td>
+        <td>The data that will be returned to the response.</td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Methods</h2>
+<table class="table table-bordered">
+    <thead class="thead-light">
+    <tr>
+        <th>Method</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><code>__construct()</code></td>
+        <td>Calls the <code>headers()</code> method to set any necessary HTTP headers.</td>
+    </tr>
+    <tr>
+        <td><code>headers()</code></td>
+        <td>Sets the HTTP headers for the response. This method can be overridden by child classes to set custom HTTP headers.</td>
+    </tr>
+    <tr>
+        <td><code>setData($data)</code></td>
+        <td>Sets the data for the response.</td>
+    </tr>
+    <tr>
+        <td><code>getData()</code></td>
+        <td>Gets the data for the response.</td>
+    </tr>
+    </tbody>
+</table>
+</div>
+
+</html>

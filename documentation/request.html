@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Request API Documentation</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item"><a class="nav-link" href="authenticate.html">Authenticate</a></li>
+    <li class="nav-item"><a class="nav-link" href="author.html">Author</a></li>
+    <li class="nav-item"><a class="nav-link" href="paper.html">Paper</a></li>
+    <li class="nav-item"><a class="nav-link" href="endpoint.html">Endpoint</a></li>
+    <li class="nav-item"><a class="nav-link" href="update.html">Update</a></li>
+    <li class="nav-item"><a class="nav-link" href="database.html">Database</a></li>
+    <li class="nav-item"><a class="nav-link" href="response.html">Response</a></li>
+    <li class="nav-item"><a class="nav-link" href="JsonResponse.html">Json Response</a></li>
+    <li class="nav-item"><a class="nav-link" href="request.html">Request</a></li>
+  </ul>
+</nav>
+<div class="container mt-5">
+  <h1>Request API Documentation</h1>
+  <p>This API allows for the processing of HTTP requests made to the server.
+    It contains information about the request method and the request path.</p>
+  <h2>Methods</h2>
+
+  <h3>__construct()</h3>
+  <p>Initializes the Request object by calling the setMethod and setPath methods.</p>
+  <h3>setMethod()</h3>
+  <p>Retrieves the request method from the $_SERVER superglobal and sets it to the $method property.</p>
+  <h3>validateRequestMethod()</h3>
+  <p>If the request method is not in the array of valid methods passed as an argument, an error message is output and the script is terminated.</p>
+  <h3>setPath()</h3>
+  <p>Retrieves the request path from the $_SERVER superglobal, removes the base path, and sets it to the $path property.</p>
+  <h3>getPath()</h3>
+  <p>Returns the request path.</p>
+
+  <h2>Examples</h2>
+  <h3>Initializing a Request object</h3>
+  <pre>
+  $request = new Request();
+</pre>
+  <h3>Validating a request method</h3>
+  <pre>
+  $request->validateRequestMethod(['GET', 'POST']);
+</pre>
+  <h3>Retrieving the request path</h3>
+  <pre>
+  $path = $request->getPath();
+</pre>
+  <h2>Properties</h2>
+  <h3>$method</h3>
+  <p>The request method (e.g. GET, POST, PUT, DELETE).</p>
+  <h3>$path</h3>
+  <p>The request path (e.g. '/api/author').</p>
+  <h2>Errors</h2>
+  <p>If the request method is invalid, an error message will be output with the following format:</p>
+  <pre>
+{
+  "message": "Invalid request method: [request method]"
+}
+</pre>
+  <h2>Additional Functionality</h2>
+  <p>In addition to the methods
+    and properties listed above, you can also add additional functionality to
+    the Request class to customize it to your specific needs.
+    For example, you may want to add a method to validate the request path or add additional
+    properties to store additional information about the request.</p>
+</div>
+</body>
+</html>

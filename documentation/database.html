@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <title>Database Class</title>
+</head>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item"><a class="nav-link" href="authenticate.html">Authenticate</a></li>
+    <li class="nav-item"><a class="nav-link" href="author.html">Author</a></li>
+    <li class="nav-item"><a class="nav-link" href="paper.html">Paper</a></li>
+    <li class="nav-item"><a class="nav-link" href="endpoint.html">Endpoint</a></li>
+    <li class="nav-item"><a class="nav-link" href="update.html">Update</a></li>
+    <li class="nav-item"><a class="nav-link" href="database.html">Database</a></li>
+    <li class="nav-item"><a class="nav-link" href="response.html">Response</a></li>
+    <li class="nav-item"><a class="nav-link" href="Jsonresponse.html">Json Response</a></li>
+    <li class="nav-item"><a class="nav-link" href="request.html">Request</a></li>
+  </ul>
+</nav>
+<body>
+<div class="container mt-5">
+  <h1>Database Class</h1>
+  <p class="lead">This class connects and interacts with a SQLite database using PDO.</p>
+
+  <h2>Properties</h2>
+  <table class="table table-bordered">
+    <thead class="thead-light">
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><code>dbConn</code></td>
+      <td>PDO</td>
+      <td>The PDO connection object to the SQLite database.</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <h2>Methods</h2>
+  <table class="
+table table-bordered">
+    <thead class="thead-light">
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><code>__construct(string $dbName)</code></td>
+      <td>Creates a database connection using PDO.
+
+        Parameters
+        $dbName (string): The name of the SQLite database file (e.g. "db/chiplay.sqlite").</td>
+    </tr>
+    <tr>
+      <td><code>executeSQL(string $sql, array $params = [])</code></td>
+      <td>Executes an SQL prepared statement. Returns an associative array of the query results.
+        Parameters
+        $sql (string): A SQL statement.
+
+        $params (array): An associative array of parameters (default empty array).</td>
+    </tr>
+    </tbody>
+  </table>
+  <h2>Example</h2>
+  <pre><code>$db = new Database("db/chiplay.sqlite");
+$sql = "SELECT * FROM papers";
+$params = [];
+$result = $db->executeSQL($sql, $params);
+echo($result);</code></pre>
+  <h2>Error Responses</h2>
+  <table class="table table-bordered">
+    <thead class="thead-light">
+    <tr>
+      <th>Error</th>
+      <th>HTTP Response Code</th>
+      <th>Example</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>PDOException when creating the database connection</td>
+      <td>500</td>
+      <td><pre><code>{
+  "message": "SQLSTATE[HY000] [14] unable to open database file"
+}</code></pre></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <h2>Success Responses</h2>
+  <table class="table table-bordered">
+    <thead class="thead-light">
+    <tr>
+      <th>Response</th>
+      <th>Example</th>
+      <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>Associative array of query results</td>
+      <td><pre><code>[
+
+    {
+        "paper_id": "64455",
+        "title": "Can Digital Games Teach Scientific Inquiry? A Case of How Affordances Can Become Constraints",
+        "award": "false",
+        }
+
+  {
+     "paper_id": "64460",
+        "title": "A Socio-Ecological Approach to Activity Games for Girls",
+        "award": "true",
+  }
+]</code></pre></td>
+      <td>An associative array of rows from the query results. The keys of the array represent the column names of the table and the values represent the data for each row.</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.16.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>

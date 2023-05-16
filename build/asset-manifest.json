@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/WebApp/coursework/app/static/css/main.44f8b8b5.css",
+    "main.js": "/WebApp/coursework/app/static/js/main.b5413bea.js",
+    "static/js/787.28cb0dcd.chunk.js": "/WebApp/coursework/app/static/js/787.28cb0dcd.chunk.js",
+    "static/media/homeimg.jpg": "/WebApp/coursework/app/static/media/homeimg.90a86ccfdd2c46fb546e.jpg",
+    "index.html": "/WebApp/coursework/app/index.html",
+    "main.44f8b8b5.css.map": "/WebApp/coursework/app/static/css/main.44f8b8b5.css.map",
+    "main.b5413bea.js.map": "/WebApp/coursework/app/static/js/main.b5413bea.js.map",
+    "787.28cb0dcd.chunk.js.map": "/WebApp/coursework/app/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.44f8b8b5.css",
+    "static/js/main.b5413bea.js"
+  ]
+}

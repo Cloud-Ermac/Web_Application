@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <title>Endpoint API</title>
+</head>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item"><a class="nav-link" href="authenticate.html">Authenticate</a></li>
+    <li class="nav-item"><a class="nav-link" href="author.html">Author</a></li>
+    <li class="nav-item"><a class="nav-link" href="paper.html">Paper</a></li>
+    <li class="nav-item"><a class="nav-link" href="endpoint.html">Endpoint</a></li>
+    <li class="nav-item"><a class="nav-link" href="update.html">Update</a></li>
+    <li class="nav-item"><a class="nav-link" href="database.html">Database</a></li>
+    <li class="nav-item"><a class="nav-link" href="response.html">Response</a></li>
+    <li class="nav-item"><a class="nav-link" href="JsonResponse.html">Json Response</a></li>
+    <li class="nav-item"><a class="nav-link" href="request.html">Request</a></li>
+  </ul>
+</nav>
+<body>
+<div class="container mt-5">
+  <h1>Endpoint API</h1>
+  <p class="lead">This API provides a general class for endpoints. It serves as the parent for all endpoints and provides functionality for querying the database and validating request parameters.</p>
+
+  <h2>Class Properties</h2>
+  <table class="table table-bordered">
+    <thead class="thead-light">
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>$data</td>
+      <td>mixed</td>
+      <td>The data for the endpoint.</td>
+    </tr>
+    <tr>
+      <td>$sql</td>
+      <td>string</td>
+      <td>The SQL query for the endpoint.</td>
+    </tr>
+    <tr>
+      <td>$sqlParams</td>
+      <td>array</td>
+      <td>The SQL parameters for the endpoint.</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <h2>Class Methods</h2>
+  <table class="table table-bordered">
+    <thead class="thead-light">
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><code>__construct()</code></td>
+      <td>Constructor for the endpoint class. Queries the database and saves the result. Initializes the SQL and SQL parameters for the endpoint. Validates the request parameters.</td>
+    </tr>
+    <tr>
+      <td><code>setSQL(string $sql)</code></td>
+      <td>Sets the SQL query for the endpoint.</td>
+    </tr>
+    <tr>
+      <td><code>setSQLParams(array $params)</code></td>
+      <td>Sets the SQL parameters for the endpoint.</td>
+    </tr>
+    <tr>
+      <td><code>getSQL()</code></td>
+      <td
+              Gets the SQL query for the endpoint.
+
+              Return Value
+              (string) The SQL query for the endpoint.
+
+      </td>
+    </tr>
+    <tr>
+      <td><code>getSQLParams()</code></td>
+      <td>Gets the SQL parameters for the endpoint.
+        Return Value
+        (array) The SQL parameters for the endpoint.</td>
+    </tr>
+    <tr>
+      <td><code>initialiseSQL()</code></td>
+      <td>Initializes the SQL and SQL parameters for the endpoint. This method should be overridden by child classes to specify the specific SQL and parameters for their endpoint.</td>
+    </tr>
+    <tr>
+      <td><code>setData(mixed $data)</code></td>
+      <td>Sets the data for the endpoint.</td>
+    </tr>
+    <tr>
+      <td><code>getData()</code></td>
+      <td>Gets the data for the endpoint.
+
+        Return Value
+        (mixed) The data for the endpoint.</td>
+    </tr>
+    <tr>
+      <td><code>endpointParams()</code></td>
+      <td>Defines the valid parameters for the endpoint.
+
+        Return Value
+        (array) An array of valid parameter names for the endpoint.</td>
+    </tr>
+    <tr>
+      <td><code>validateParams(array $params)</code></td>
+      <td>Validates the request parameters against an array of valid parameters for the endpoint. Sends a 400 Bad Request response and stops execution if an invalid parameter is found.
+
+        Parameters
+        $params (array): An array of valid parameter names for the endpoint.</td>
+    </tr>
+    </tbody>
+  </table>
+  <h2>Example Requests</h2>
+  <h3>Get data from the endpoint</h3>
+  <pre><code>GET /endpoint</code></pre>
+  <h4>Success Response</h4>
+  <pre><code>Status: 200 OK
+
+"data": [
+{
+"id": 1,
+"name": "John Smith"
+},
+{
+"id": 2,
+"name": "Jane Doe"
+}
+]
+}</code></pre>
+  <h4>Error Response</h4>
+  <pre><code>Status: 400 Bad Request
+
+{
+"message": "Invalid parameter: foo"
+}</code></pre>
+  <h3>Set data for the endpoint</h3>
+  <pre><code>POST /endpoint
+Content-Type: application/json
+
+{
+"data": [
+{
+"id": 3,
+"name": "Bob Johnson"
+}
+]
+}</code></pre>
+  <h4>Success Response</h4>
+  <pre><code>Status: 200 OK
+
+{
+"message": "Data set successfully."
+}</code></pre>
+  <h4>Error Response</h4>
+  <pre><code>Status: 401 Unauthorized
+
+{
+"message": "Access denied."
+}</code></pre>
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.16.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+

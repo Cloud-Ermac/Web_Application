@@ -1,0 +1,12 @@
+{
+    "autoload": {
+        "psr-4": {
+           "src\\": "src/"
+        },
+      "classmap": ["src","src/FirebaseJWT"]
+
+    },
+  "require": {
+    "monolog/monolog": "^1.25"
+  }
+}

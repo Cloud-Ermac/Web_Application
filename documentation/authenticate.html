@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web API Documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="authenticate.html">Authenticate</a></li>
+        <li class="nav-item"><a class="nav-link" href="author.html">Author</a></li>
+        <li class="nav-item"><a class="nav-link" href="paper.html">Paper</a></li>
+        <li class="nav-item"><a class="nav-link" href="endpoint.html">Endpoint</a></li>
+        <li class="nav-item"><a class="nav-link" href="update.html">Update</a></li>
+        <li class="nav-item"><a class="nav-link" href="database.html">Database</a></li>
+        <li class="nav-item"><a class="nav-link" href="response.html">Response</a></li>
+        <li class="nav-item"><a class="nav-link" href="JsonResponse.html">Json Response</a></li>
+        <li class="nav-item"><a class="nav-link" href="request.html">Request</a></li>
+    </ul>
+</nav>
+<body>
+<div class="container">
+    <h1 class="mt-5">Web API Documentation</h1>
+    <p>Author: Olayinka Hassan (Student ID: W19014555)</p>
+    <h2>Endpoint: Authenticate</h2>
+    <p>
+        <strong>Description:</strong> This endpoint allows users to authenticate their username and password against those stored in the database. If authentication is successful, a JSON Web Token (JWT) is returned.
+    </p>
+    <p>
+        <strong>Request Method:</strong> POST
+    </p>
+    <h3>Parameters</h3>
+    <ul>
+        <li><strong>username</strong> (string, required): The username to be authenticated.</li>
+        <li><strong>password</strong> (string, required): The password to be authenticated.</li>
+    </ul>
+    <h3>Example</h3>
+    <pre class="bg-light p-3 rounded">
+curl -X POST \
+  https://example.com/authenticate \
+  -H 'Authorization: Basic [base64-encoded-username-and-password]'
+</pre>
+    <h3>Response</h3>
+    <h4>On success:</h4>
+    <ul>
+        <li><strong>HTTP Status Code:</strong> 200 OK</li>
+        <li><strong>JSON body:</strong></li>
+    </ul>
+    <pre class="bg-light p-3 rounded">
+{
+    "length": 0,
+    "message": "success",
+    "jwt": "[generated JWT]"
+}
+</pre>
+    <h4>On error:</h4>
+    <ul>
+        <li><strong>HTTP Status Code:</strong> 400 Bad Request</li>
+        <li><strong>JSON body:</strong></li>
+    </ul>
+    <pre class="bg-light p-3 rounded">
+{
+    "message": "Missing required parameters: 'username' and 'password'"
+}
+</pre>
+</div>
+</body>
+</html>

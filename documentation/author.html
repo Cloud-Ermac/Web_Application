@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <title>Web API Documentation - Author</title>
+</head>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item"><a class="nav-link" href="authenticate.html">Authenticate</a></li>
+    <li class="nav-item"><a class="nav-link" href="author.html">Author</a></li>
+    <li class="nav-item"><a class="nav-link" href="paper.html">Paper</a></li>
+    <li class="nav-item"><a class="nav-link" href="endpoint.html">Endpoint</a></li>
+    <li class="nav-item"><a class="nav-link" href="update.html">Update</a></li>
+    <li class="nav-item"><a class="nav-link" href="database.html">Database</a></li>
+    <li class="nav-item"><a class="nav-link" href="response.html">Response</a></li>
+    <li class="nav-item"><a class="nav-link" href="JsonResponse.html">Json Response</a></li>
+    <li class="nav-item"><a class="nav-link" href="request.html">Request</a></li>
+  </ul>
+</nav>
+<body>
+<div class="container mt-5">
+  <h1>Web API Documentation</h1>
+  <h2>Author</h2>
+  <p>
+    <strong>Description:</strong> This endpoint retrieves information about the authors at a conference. It can filter the results based on the `paper_id` or `author_id` parameters.
+  </p>
+  <p>
+    <strong>Request Method:</strong> GET
+  </p>
+  <h3>Parameters</h3>
+  <ul>
+    <li><strong>paper_id</strong> (integer, optional): Filters the results by the ID of a paper.</li>
+    <li><strong>author_id</strong> (integer, optional): Filters the results by the ID of an author.</li>
+  </ul>
+  <p><strong>Note:</strong> Both `paper_id` and `author_id` cannot be provided in the same request.</p>
+  <h3>Example</h3>
+  <pre class="bg-light p-3 rounded">
+curl -X GET http://unn-w19014555.newnumyspace.co.uk/WebApp/coursework/api/authors?paper_id=64460
+    </pre>
+  <h3>Response</h3>
+  <h4>On success:</h4>
+  <ul>
+    <li><strong>HTTP Status Code:</strong> 200 OK</li>
+    <li><strong>JSON body:</strong></li>
+  </ul>
+  <pre class="bg-light p-3 rounded">
+{"author_id":"64306","first_name":"Adela","middle_initial":null,"last_name":"Kapuscinska",
+    "institution":"Carnegie Mellon University","country":"United States"}
+    </pre>
+  <h4>On error:</h4>
+  <ul>
+    <li><strong>HTTP Status Code:</strong> 400 Bad Request</li>
+    <li><strong>JSON body:</strong>
+    </ul>
+      <pre class="bg-light p-3 rounded">
+{
+    "message": "Invalid parameter [invalid parameter]"
+}
+</pre>
+
+      or
+
+      <pre class="bg-light p-3 rounded">
+{
+    "message": "Invalid combination of paper_id and author_id parameters"
+}
+</pre>
+</div>
+</body>
+</html>
